@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion versions.compileSdk
+
+    defaultConfig {
+        applicationId versions.appid
+
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk
+
+        versionCode versions.code
+        versionName versions.name
+        testInstrumentationRunner " androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        pickFirst 'META-INF/atomicfu.kotlin_module'
+    }
+
+    compileOptions {
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
+    }
+    buildToolsVersion = versions.buildTools
+}
+
+dependencies {
+
+    implementation libraries.supportAppCompat
+    implementation libraries.constraintLayout
+    implementation libraries.supportRecyclerView
+    implementation libraries.supportDesign
+    implementation libraries.preference
+
+
+    //RxJava2
+    implementation libraries.rxjava2
+    implementation libraries.rxjava2Android
+
+    implementation libraries.timber
+
+    //arch
+    implementation libraries.lifecycleExtensions
+    annotationProcessor libraries.liveDataCompiler
+
+    //picasso
+    implementation libraries.picasso
+
+    //retrofit
+    implementation libraries.okHttp
+    implementation libraries.okHttpLoggingInterceptor
+    implementation libraries.retrofit
+    implementation libraries.retrofitRx
+    implementation libraries.retrofitJConverter
+    implementation libraries.jacksonDatabind
+    implementation libraries.jacksonCore
+    implementation libraries.jacksonAnnotations
+
+
+    //butterknife
+    implementation libraries.butterknife
+    annotationProcessor libraries.butterknifeCompiler
+
+    //dagger
+    implementation libraries.dagger
+    annotationProcessor libraries.daggerCompiler
+
+
+    //dialogs
+    implementation libraries.dialogs_core
+    implementation libraries.dialogs_date
+    implementation libraries.dialogs_lifecycle
+
+    // Test
+    testImplementation libraries.junit
+    androidTestImplementation libraries.supportTestRunner
+    androidTestImplementation libraries.espressoCore
+
+    testImplementation libraries.mockitoCore
+    androidTestImplementation libraries.mockitoCompile
+}

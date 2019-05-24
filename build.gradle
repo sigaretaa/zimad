@@ -1,0 +1,30 @@
+apply from: 'dependencies.gradle'
+
+buildscript {
+
+    apply from: 'dependencies.gradle'
+
+    repositories {
+        google()
+        jcenter()
+        maven { url 'https://dl.bintray.com/greenfrvr/maven/' }
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:${versions.androidGradlePlugin}"
+        classpath gradlePlugins.googleServicesPlugin
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        google()
+        jcenter()
+        maven { url 'https://dl.bintray.com/greenfrvr/maven/' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

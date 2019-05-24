@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Zimad</string>
+
+
+    <string name="tab_cats">Cats</string>
+    <string name="tab_dogs">Dogs</string>
+
+</resources>
